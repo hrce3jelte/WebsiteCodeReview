@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+
+    <link rel="stylesheet" type="text/css" href="../static/_FormHelpers.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Register Form</h1>
+        <p>
+            This is the page where you can register for my website.
+        </p>
+
+        {% from "_FormHelpers.html" import render_field %}
+        <form method=post action="/LogIn">
+          <dl>
+              {{ render_field(form.Email) }}
+              {{ render_field(form.PassWord) }}
+          </dl>
+          <p><input type=submit value=Register></p>
+        </form>
+    </div>
+</body>
+</html>
