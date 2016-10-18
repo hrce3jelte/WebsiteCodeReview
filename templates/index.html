@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if LogedIn %}{{ User }} {%else%} Index {% endif %}</title>
+</head>
+<body>
+    {%if LogedIn %}
+    <a href={{ url_for("clear") }}>LogIn</a>
+    {% else %}
+    <a href={{ url_for("login") }}>LogIn</a>
+    {%endif%}
+
+</body>
+</html>

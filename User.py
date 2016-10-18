@@ -11,7 +11,7 @@ class User:
         self.SetPassword(PassWord)
 
     def __repr__(self):
-        return "FirstName: {}, Email: {}".format(self.FirstName, self.Email)
+        return ("{}".format(self.Email))
 
     def WriteToFile(self):
         #adds a new user to the file
@@ -65,3 +65,11 @@ class User:
             if(cls.CheckPassword(User[0]['PassWord'], PassWord)):
                 return True
         return False
+
+    @classmethod
+    def GetUserByEmail(cls, Email):
+        with open("Users.txt", "r")  as f:
+            List = json.load(f)
+            for SearchUser in List:
+                if SearchUser[0]["Email"] == Email:
+                    return User(SearchUser[0]["FirstName"], SearchUser[0]["LastName"], SearchUser[0 ]["Email"], "123")
