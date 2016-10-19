@@ -11,7 +11,8 @@
         <p>
             This is the page where you can register for my website.
         </p>
-
+        <!-- uses wtforms and _formhelpers to make a form
+        the rest of the form handling happens in de function associated with this form-->
         {% from "_FormHelpers.html" import render_field %}
         <form method=post action="/LogIn">
           <dl>

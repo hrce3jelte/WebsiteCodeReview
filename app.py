@@ -1,6 +1,9 @@
 from flask import Flask, render_template, session, request, url_for, redirect
 from PythonBackend import LogIn, Register, index
 
+#main app use this to start up the app
+
+
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(["zip" ,"rar"])
 

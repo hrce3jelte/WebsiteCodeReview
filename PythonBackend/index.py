@@ -1,7 +1,9 @@
 from flask import session, request, redirect, render_template
 from werkzeug.utils import secure_filename
 
-
+#the index for the website it checks if you're logged in or not and then renders a template based on that
+# there is also code to upload a file to the specified folder
+#TODO make the upload thing more general
 def index(UploadFolder):
     if ("User" in session):
         if (request.method == "POST"):

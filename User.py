@@ -1,7 +1,10 @@
 import  json, os
 from werkzeug.security import generate_password_hash, check_password_hash
 
+#User class to helps to save and search users
 
+
+#TODO search for better way to use open method
 class User:
     #init method expects that all the varibales are valid
     def __init__(self, FirstName, LastName, Email, PassWord):

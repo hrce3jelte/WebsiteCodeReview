@@ -2,6 +2,8 @@ from FormValidation.RegistrationForm import RegistrationForm
 from flask import request, redirect, render_template, url_for
 from User import User
 
+#Simple register function it uses wtforms to register and saves it on json format to a file
+#see the users.py for more information on that
 def Register():
     Form = RegistrationForm(request.form)
     if request.method == 'POST'and Form.validate():
