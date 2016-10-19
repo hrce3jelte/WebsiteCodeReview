@@ -1,10 +1,12 @@
 from flask import Flask, render_template, session, request, url_for, redirect
-from werkzeug.utils import secure_filename
-from PythonBackend.Register import Register
-from PythonBackend.LogIn import LogIn
+from PythonBackend import LogIn, Register, index
 
 UPLOAD_FOLDER = 'uploads/'
-ALLOWED_EXTENSIONS = set(['py'])
+ALLOWED_EXTENSIONS = set(["zip" ,"rar"])
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -12,22 +14,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/", methods=["POST", "GET"])
 def Index():
-    if ("User" in session):
-        if (request.method == "POST"):
-            if ("file" not in request.files):
-                return redirect(request.url)
-
-            file = request.files["file"]
-
-            if file.filename == "":
-                return redirect(request.url)
-            if file:
-                filename = secure_filename(file.filename)
-                file.save(app.config["UPLOAD_FOLDER"] + filename)
-
-        print(session["User"])
-        return render_template("indexLogedIn.html", User=session["User"], LogedIn=True)
-    return render_template("index.html")
+    return index(app.config["UPLOAD_FOLDER"])
 
 
 @app.route('/user/<username>')
